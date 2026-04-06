@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Meu Planner</title>
+<title>BOOM</title>
 <style>
   :root { --bg:#111; --card:#1a1a1a; --border:#2a2a2a; --text:#eee; --text2:#888; --accent:#6c63ff; --green:#4caf50; --orange:#ff9800; --blue:#2196f3; --red:#f44336; }
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -131,10 +131,10 @@
 </head>
 <body>
 <div class="app">
-  <h1>Meu <span>Planner</span></h1>
+  <h1><span>BOOM</span> <span style="font-size:14px;color:var(--text2);font-weight:400">get it done.</span></h1>
 
   <div class="add-bar">
-    <input type="text" id="input" placeholder="O que precisa fazer? Aperte Enter..." autofocus>
+    <input type="text" id="input" placeholder="What's next? Hit Enter..." autofocus>
     <button onclick="addTask()">+</button>
   </div>
 
@@ -155,7 +155,7 @@
 </div>
 
 <script>
-let tasks = JSON.parse(localStorage.getItem('mp_tasks') || '[]');
+let tasks = JSON.parse(localStorage.getItem('boom_tasks') || '[]');
 let filter = 'todas';
 
 const TAGS = ['A Fazer', 'Fazendo', 'Feito'];
@@ -172,7 +172,7 @@ document.getElementById('chkRecur').addEventListener('change', function() {
   document.getElementById('selRecur').style.display = this.checked ? 'inline-block' : 'none';
 });
 
-function save() { localStorage.setItem('mp_tasks', JSON.stringify(tasks)); }
+function save() { localStorage.setItem('boom_tasks', JSON.stringify(tasks)); }
 
 function fmtDate(iso) {
   if (!iso) return '';
@@ -340,7 +340,7 @@ function render() {
   // List
   const filtered = filter === 'todas' ? tasks : tasks.filter(t => t.tag === filter);
   const list = document.getElementById('list');
-  if (!filtered.length) { list.innerHTML = '<div class="empty">Nenhuma tarefa ainda. Digite acima e aperte Enter!</div>'; return; }
+  if (!filtered.length) { list.innerHTML = '<div class="empty">Nothing here yet. Type above and hit Enter!</div>'; return; }
 
   list.innerHTML = filtered.map(t => {
     const meta = [];
